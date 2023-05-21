@@ -9,7 +9,7 @@ namespace ConcertDB.DAL.Entities
         [Required]
         public Guid Id { get; set; }
 
-        public DateOnly? UseDate { get; set; }
+        public DateTime? UseDate { get; set; }
 
         public Boolean IsUsed { get; set; }
 
