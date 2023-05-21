@@ -28,6 +28,18 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 
 var app = builder.Build();
 
+SeederData();
+void SeederData()
+{
+    IServiceScopeFactory? scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+    using (IServiceScope? scope = scopedFactory.CreateScope())
+    {
+        SeederDb? service = scope.ServiceProvider.GetService<SeederDb>();
+        service.SeederAsync().Wait();
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
