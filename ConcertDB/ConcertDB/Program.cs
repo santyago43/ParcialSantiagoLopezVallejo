@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ConcertDB.DAL;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,10 @@ builder.Services.AddDbContext<DataBaseContext>(a =>
 }
 
 );
+
+
+
+var app = builder.Build();
 
 var app = builder.Build();
 
