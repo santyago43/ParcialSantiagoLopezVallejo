@@ -21,27 +21,6 @@ namespace ConcertDB_Web.Controllers
             return View();
         }
 
-        [HttpPut, ActionName("Verificar")]
-        public async Task<ActionResult> Verificar(Guid id, String entranceGate)
-        {
-
-            try
-            {
-
-                var url = String.Format("https://localhost:7268/api/Tickets/Get/{0}", id);
-                var json = await _HTTPClient.CreateClient().GetStringAsync(url);
-                Tickets tickets = JsonConvert.DeserializeObject<Tickets>(json);
-
-                if (tickets != null)
-                {
-                    return View(tickets);
-                }
-                return View("El tiquete no existe");
-            }
-            catch (Exception ex)
-            {
-                return View("Error", ex);
-            }
-        }
+        
     }  
 }
