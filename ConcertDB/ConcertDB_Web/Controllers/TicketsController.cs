@@ -21,6 +21,25 @@ namespace ConcertDB_Web.Controllers
             return View();
         }
 
-        
+        [HttpGet]
+        public async Task<ActionResult> Verificar(Guid id)
+        {
+
+                var url = "https://localhost:7268/api/Tickets/Get/078d3167-e89e-455c-ec23-08db5a45cc09";
+                var json = await _HTTPClient.CreateClient().GetStringAsync(url);
+                Tickets tickets = JsonConvert.DeserializeObject<Tickets>(json);
+
+                if (tickets != null)
+                {
+                    if (tickets.IsUsed == false)
+                    {
+                        return View();
+                    }
+                    
+                }
+                return NotFound();
+
+            
+        }
     }  
 }
