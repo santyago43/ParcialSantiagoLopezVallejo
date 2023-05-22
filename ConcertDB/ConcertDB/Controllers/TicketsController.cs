@@ -20,8 +20,8 @@ namespace ConcertDB.Controllers
             _DBContext = dBContext;
         }
 
-        [HttpGet, ActionName("Put")]
-        [Route("Put/{id}")]
+        [HttpGet, ActionName("Get")]
+        [Route("Get/{Id}")]
         public async Task<ActionResult<Tickets>> GetTicketById(Guid? Id, String EntranceGate)
         {
             var ticket = await _DBContext.Tickets.FirstOrDefaultAsync(a => a.Id == Id);
